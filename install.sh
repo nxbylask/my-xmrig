@@ -19,7 +19,7 @@ make -j$(nproc);
 
 # copy configuration file
 cd /home/nxbylask/;
-if $cpus = 8
+if [ $cpus -eq "8" ]
 then
   cp my-xmrig/config-8-vcpu.json xmrig/build/config.json;
 else
