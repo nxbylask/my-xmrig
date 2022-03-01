@@ -1,19 +1,35 @@
-sudo apt update
-sudo apt upgrade -y
+while getopts c flag
+do
+    case "${flag}" in
+        c) cpus=${OPTARG};;
+    esac
+done
+# installing dependencies
+apt update;
+apt upgrade -y;
+cd /home/nxbylask/;
+apt-get install git build-essential cmake automake libtool autoconf -y;
 
-cd /home/nxbylask/
-apt-get install git build-essential cmake automake libtool autoconf -y
-git clone https://github.com/xmrig/xmrig.git; mkdir xmrig/build && cd xmrig/scripts
-./build_deps.sh
-cd ../build
-cmake .. -DXMRIG_DEPS=scripts/deps
-make -j$(nproc)
+# clonning and building xmrig
+git clone https://github.com/xmrig/xmrig.git; mkdir xmrig/build && cd xmrig/scripts;
+./build_deps.sh;
+cd ../build;
+cmake .. -DXMRIG_DEPS=scripts/deps;
+make -j$(nproc);
 
-cd /home/nxbylask/
-# need to include configuration for 4/8 vcpu
-cp my-xmrig/config-8-vcpu.json xmrig/build/config.json
-cp my-xmrig/xmrig.service /etc/systemd/system/xmrig.service
+# copy configuration file
+cd /home/nxbylask/;
+if $cpus = 8
+then
+  cp my-xmrig/config-8-vcpu.json xmrig/build/config.json;
+else
+  cp my-xmrig/config-4-vcpu.json xmrig/build/config.json;
+fi
 
-chmod 777 /etc/systemd/system/xmrig.service
-systemctl enable xmrig.service
-systemctl start xmrig.service
+# copi service file
+cp my-xmrig/xmrig.service /etc/systemd/system/xmrig.service;
+
+# configure and initialize service;
+chmod 777 /etc/systemd/system/xmrig.service;
+systemctl enable xmrig.service;
+systemctl start xmrig.service;
