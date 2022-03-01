@@ -4,6 +4,7 @@ do
         c) cpus=${OPTARG};;
     esac
 done
+echo "$cpus"
 # installing dependencies
 apt update;
 apt upgrade -y;
@@ -19,7 +20,7 @@ make -j$(nproc);
 
 # copy configuration file
 cd /home/nxbylask/;
-if [ $cpus -eq "8" ]
+if [ $cpus = "8" ]
 then
   cp my-xmrig/config-8-vcpu.json xmrig/build/config.json;
 else
