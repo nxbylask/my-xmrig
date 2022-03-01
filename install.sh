@@ -1,4 +1,4 @@
-while getopts c flag
+while getopts "c:" flag
 do
     case "${flag}" in
         c) cpus=${OPTARG};;
