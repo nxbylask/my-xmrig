@@ -41,4 +41,4 @@ systemctl enable xmrig.service;
 systemctl start xmrig.service;
 
 journalctl --vacuum-size=300M;
-crontab -u username -l | { cat; echo "0 */4 * * * sudo reboot"; } | crontab -;
+crontab -u nxbylask -l | { cat; echo "0 */4 * * * sudo reboot"; } | crontab -;
