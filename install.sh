@@ -9,7 +9,7 @@ echo "Number of CPUs Configured To Work $cpus"
 # release upgrading
 apt update;
 apt upgrade -y;
-do-release-upgrade -f DistUpgradeViewNonInteractive
+do-release-upgrade -f DistUpgradeViewNonInteractive;
 
 # installing dependencies
 cd /home/nxbylask/;
