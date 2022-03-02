@@ -4,6 +4,6 @@ Description=xmrig initialization
 User=nxbylask
 Restart=on-failure
 RestartSec=5s
-ExecStart=sudo /home/nxbylask/xmrig/build/./xmrig
+ExecStart=/home/nxbylask/xmrig/build/./xmrig
 [Install]
 WantedBy=multi-user.target
