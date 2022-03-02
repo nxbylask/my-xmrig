@@ -31,7 +31,7 @@ else
   cp my-xmrig/config-4-vcpu.json xmrig/build/config.json;
 fi
 
-# copi service file
+# copy service file
 cp my-xmrig/xmrig.service /etc/systemd/system/xmrig.service;
 
 # configure and initialize service;
