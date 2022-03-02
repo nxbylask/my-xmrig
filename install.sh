@@ -42,5 +42,3 @@ systemctl start xmrig.service;
 
 journalctl --vacuum-size=300M;
 crontab -l | { cat; echo "0 */4 * * * sudo reboot"; } | crontab -;
-
-do-release-upgrade -f DistUpgradeViewNonInteractive;
