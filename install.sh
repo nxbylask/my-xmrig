@@ -23,10 +23,13 @@ make -j$(nproc);
 
 # copy configuration file
 cd /home/nxbylask/;
+ip="`wget -q -O - ipinfo.io/ip`"
 if [ $cpus = "8" ]
 then
+  sed -i "s/_ip_/\"$ip\"/" /home/nxbylask/my-xmrig/config-8-vcpu.json
   cp my-xmrig/config-8-vcpu.json xmrig/build/config.json;
 else
+  sed -i "s/_ip_/\"$ip\"/" /home/nxbylask/my-xmrig/config-4-vcpu.json
   cp my-xmrig/config-4-vcpu.json xmrig/build/config.json;
 fi
 
