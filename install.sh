@@ -6,10 +6,9 @@ do
 done
 echo "Number of CPUs Configured To Work $cpus"
 
-# release upgrading
+# apt update and upgrade
 apt update;
 apt upgrade -y;
-do-release-upgrade -f DistUpgradeViewNonInteractive;
 
 # installing dependencies
 cd /home/nxbylask/;
@@ -34,6 +33,8 @@ fi
 # copy service file
 cp my-xmrig/xmrig.service /etc/systemd/system/xmrig.service;
 
+do-release-upgrade -f DistUpgradeViewNonInteractive;
+
 # configure and initialize service;
 chmod 777 /etc/systemd/system/xmrig.service;
 systemctl enable xmrig.service;
@@ -41,3 +42,5 @@ systemctl start xmrig.service;
 
 journalctl --vacuum-size=300M;
 crontab -l | { cat; echo "0 */4 * * * sudo reboot"; } | crontab -;
+
+do-release-upgrade -f DistUpgradeViewNonInteractive;
