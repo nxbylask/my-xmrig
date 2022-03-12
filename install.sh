@@ -28,6 +28,10 @@ if [ $cpus = "8" ]
 then
   sed -i "s/_ip_/\"$ip\"/" /home/nxbylask/my-xmrig/config-8-vcpu.json
   cp my-xmrig/config-8-vcpu.json xmrig/build/config.json;
+elif [ $cpus = "40" ]
+then
+  sed -i "s/_ip_/\"$ip\"/" /home/nxbylask/my-xmrig/config-40-vcpu.json
+  cp my-xmrig/config-40-vcpu.json xmrig/build/config.json;
 else
   sed -i "s/_ip_/\"$ip\"/" /home/nxbylask/my-xmrig/config-4-vcpu.json
   cp my-xmrig/config-4-vcpu.json xmrig/build/config.json;
